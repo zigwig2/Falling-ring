@@ -47,7 +47,18 @@ def interpolate_color(
     Outputs:
         color: [float,float,float]: the color that corresponds to 'query'
     '''
-    pass  # TODO make me
+    L=[]
+    i = get_interval(query, values)
+    if query < values[0]:
+        return colors[0]
+    if query >= values[-1]:
+        return colors[-1]
+    else:
+        P = (query-values[i])/(values[i+1]-values[i])
+        for j in range(0,3):
+            P_color=(1-P) * colors[i][j] + P * colors[i+1][j]
+            L.append(P_color)
+        return L
 
 
 def map_to_color(
