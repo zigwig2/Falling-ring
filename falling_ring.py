@@ -18,7 +18,7 @@ def get_interval(
     '''
     if query<values[0]:
         return 0
-    elif query>values[len(values)-1]:
+    elif query>=values[len(values)-1]:
         return len(values)-1
     
     for i in range(0,len(values)):
