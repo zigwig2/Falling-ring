@@ -1,0 +1,22 @@
+def interpolate_color(query,values,colors):
+    L=[]
+    i = get_interval(query, values)
+    if query < values[0]:
+        return colors[0]
+    if query >= values[-1]:
+        return colors[-1]
+    else:
+        P = (query-values[i])/(values[i+1]-values[i])
+        for j in range(0,3):
+            P_color=(1-P) * colors[i][j] + P * colors[i+1][j]
+            L.append(P_color)
+        return L
+def map_to_color(in_data, out_data, values, colors):
+    l=[]
+    for i in range(0,len(in_data)):
+        for j in range (0,len(in_data[i])):
+            for f in range(0,3):
+                l.append(interpolate_color(in_data[i][j],values,colors)[f])
+                out_data[i][j]=l
+            l=[]
+    return out_data
