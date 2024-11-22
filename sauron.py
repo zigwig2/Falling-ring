@@ -37,8 +37,10 @@ def thermal_exchange(
     Returns:
         None (liquid_temp[current_depth] and ring_temp[current_depth] are modified)
     '''
-    pass  # TODO make me
-
+    temp1=ring_temp[current_depth]  
+    temp2=liquid_temp[current_depth]   # mis des val temp pour garder en memoir les val de ringtemp et liquidtemp qui vont etre modif
+    ring_temp[current_depth]=[v+(transfer_coefficient*(temp2[i]-v)/capacity_coefficient_ring) for i,v in enumerate(ring_temp[current_depth])]
+    liquid_temp[current_depth]=[v+(transfer_coefficient*(temp1[i]-v)/capacity_coefficient_liquid) for i,v in enumerate(liquid_temp[current_depth])]   # formule plus haut en list comprehention
 
 def thermal_conduction(
     ring_temp,
