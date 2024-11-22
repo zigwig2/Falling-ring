@@ -79,7 +79,14 @@ def map_to_color(
     Outputs:
         None (out_data is modified)
     '''
-    ass  # TODO make me
+    l=[]
+    for i in range(0,len(in_data)):
+        for j in range (0,len(in_data[i])):
+            for f in range(0,3):
+                l.append(interpolate_color(in_data[i][j],values,colors)[f])
+                out_data[i][j]=l
+            l=[]
+    return out_data
 
 def thermal_exchange(
     liquid_temp,
