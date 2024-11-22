@@ -79,8 +79,7 @@ def map_to_color(
     Outputs:
         None (out_data is modified)
     '''
-    pass  # TODO make me
-
+    ass  # TODO make me
 
 def thermal_exchange(
     liquid_temp,
