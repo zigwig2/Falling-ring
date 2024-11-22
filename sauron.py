@@ -69,4 +69,7 @@ def thermal_conduction(
     Returns:
         None (ring_temp[current_depth] is modified)
     '''
-    pass  # TODO make me
+    temp=tuple(ring_temp[current_depth])
+    for i in range(len(temp)-1):
+        ring_temp[current_depth][i]+=(transfer_coefficient*(temp[i+1]+temp[i-1]-2*temp[i]))/capacity_coefficient_ring
+    ring_temp[current_depth][-1]+=(transfer_coefficient*(temp[0]+temp[-2]- 2*temp[-1]))/capacity_coefficient_ring
