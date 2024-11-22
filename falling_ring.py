@@ -16,7 +16,14 @@ def get_interval(
     Outputs:
         i: int: the index corresponding to the smaller temperature of the interval's boundaries.
     '''
-    pass  # TODO make me
+    if query<values[0]:
+        return 0
+    elif query>values[len(values)-1]:
+        return len(values)-1
+    
+    for i in range(0,len(values)):
+        if query>=values[i] and query<values[i+1]:
+            return i
 
 
 def interpolate_color(
